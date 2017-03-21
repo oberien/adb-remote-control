@@ -13,7 +13,7 @@ It was completely written from scratch.
 
 # How to Run
 
-Download the [latest release jar](https://github.com/oberien/adb-remote-control/releases/download/v0.1.0/adb-remote-control.jar).
+Download the [latest release jar](https://github.com/oberien/adb-remote-control/releases/download/v0.1.1/adb-remote-control.jar).
 
 From the command line run `java -jar adb-remote-control.jar`
 
