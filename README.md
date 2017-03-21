@@ -17,6 +17,19 @@ Download the [latest release jar](https://github.com/oberien/adb-remote-control/
 
 From the command line run `java -jar adb-remote-control.jar`
 
+# Functionality
+
+* All ASCII characters from (including) 32 to (excluding) 127 are sent as text.
+  These are all printable ascii characters including lowercase, uppercase,
+  numbers and normal special chars.
+* Return (Enter) is sent.
+* Pressing `Esc` emulates a `Back` key event.
+* Pressing `Home` will be forwarded.
+* `Backspace` will delete the last character.
+* `Ctrl+d` emulates 500 `Backspace` presses and can be used to quickly erase
+  a large text.
+* `Up`, `Down`, `Left` and `Right` are working as expected.
+
 # Config
 
 If needed you can create a config file called `config.properties`.

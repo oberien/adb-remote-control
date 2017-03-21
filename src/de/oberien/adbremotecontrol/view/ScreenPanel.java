@@ -1,6 +1,7 @@
 package de.oberien.adbremotecontrol.view;
 
 import de.oberien.adbremotecontrol.adb.AdbDevice;
+import de.oberien.adbremotecontrol.adb.AdbShell;
 import de.oberien.adbremotecontrol.adb.AndroidKeyEvent;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class ScreenPanel extends JPanel {
     private BufferedImage screenshot;
@@ -52,15 +54,30 @@ public class ScreenPanel extends JPanel {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+//                System.out.println("keyPressed: " + e);
                 AndroidKeyEvent key = AndroidKeyEvent.fromAwtKeycode(e.getKeyCode());
                 if (key != null) {
                     device.type(key);
+                }
+
+                // map Ctrl+d to delete 500
+                if (e.getKeyCode() == KeyEvent.VK_D && e.isControlDown()) {
+                    StringBuilder sb = new StringBuilder("input keyevent ");
+                    for (int i = 0; i < 500; i++) {
+                        sb.append(" ").append(AndroidKeyEvent.KEY_DEL.getKeycode());
+                    }
+                    try {
+                        new AdbShell().executeAsync(sb.toString());
+                    } catch (IOException e1) {
+                        throw new RuntimeException(e1);
+                    }
                 }
             }
 
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() >= 32 && e.getKeyChar() < 128) {
+//                System.out.println("keyTyped: " + e);
+                if (e.getKeyChar() >= 32 && e.getKeyChar() < 127) {
                     device.text(String.valueOf(e.getKeyChar()));
                 }
             }
