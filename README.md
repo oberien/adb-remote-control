@@ -38,7 +38,17 @@ Currently the following keys are supported:
 * `adbPath`: The path to the `adb` binary.
 * `timeout`: The time between having received a screenshot and taking the next one.
 
-## License
+# Troubleshooting
+
+## Signal
+
+In Signal screenshots are disabled by default.
+This means that while having Signal open, the displayed image of the phone
+won't change.
+Follow [this tutorial](support.whispersystems.org/hc/en-us/articles/213191027-Can-I-take-a-screenshot-)
+to enable screenshots and therefore make ADB Remote Control working with Signal.
+
+# License
 
 Licensed under either of
 
