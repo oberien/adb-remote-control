@@ -37,9 +37,14 @@ public class AdbProcess implements Closeable {
             in.mark(4096);
             byte[] buf = new byte[4096];
             int len = in.read(buf);
+            if (len == -1) {
+                throw new IOException("Stream closed");
+            }
             // if currently not enough is available, block until further is
             if (len < until.length) {
-                in.read();
+                if (in.read() == -1) {
+                    throw new IOException("Stream closed");
+                }
                 in.reset();
                 continue;
             }
