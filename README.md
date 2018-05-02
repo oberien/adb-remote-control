@@ -38,6 +38,15 @@ Currently the following keys are supported:
 * `adbPath`: The path to the `adb` binary.
 * `timeout`: The time between having received a screenshot and taking the next one.
 
+# Building
+
+To manually build and run this project, go into the `src` directory and execute
+
+```sh
+javac de/oberien/adbremotecontrol/Main.java
+java de.oberien.adbremotecontrol.Main 
+```
+
 # Troubleshooting
 
 ## Signal
