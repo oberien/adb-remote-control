@@ -32,7 +32,7 @@ public class AdbDevice {
 
     public void click(int x, int y) {
         try (AdbShell shell = new AdbShell()) {
-            shell.executeAsync("input tab " + x + " " + y);
+            shell.executeAsync("input tap " + x + " " + y);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

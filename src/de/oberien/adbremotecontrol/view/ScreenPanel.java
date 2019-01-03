@@ -23,8 +23,8 @@ public class ScreenPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 double scale = getScale();
-                double x = e.getX() * scale;
-                double y = e.getY() * scale;
+                double x = e.getX() / scale;
+                double y = e.getY() / scale;
                 device.click((int) x, (int) y);
             }
 
@@ -36,6 +36,9 @@ public class ScreenPanel extends JPanel {
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                if (startX == e.getX() && startY == e.getY()) {
+                    return;
+                }
                 double scale = getScale();
                 double downX = startX / scale;
                 double downY = startY / scale;
@@ -54,7 +57,7 @@ public class ScreenPanel extends JPanel {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-//                System.out.println("keyPressed: " + e);
+                System.out.println("keyPressed: " + e);
                 AndroidKeyEvent key = AndroidKeyEvent.fromAwtKeycode(e.getKeyCode());
                 if (key != null) {
                     device.type(key);

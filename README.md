@@ -17,6 +17,13 @@ Download the [latest release jar](https://github.com/oberien/adb-remote-control/
 
 From the command line run `java -jar adb-remote-control.jar`
 
+# Compiling
+
+Go into the `src/` directory and execute `javac de/oberien/adbremotecontrol/Main.java`.
+To build the `.jar` file, after compiling, execute
+`jar -cvfe adb-remote-control.jar de.oberien.adbremotecontrol.Main **/*.class`.
+Depending on your shell, you might need to set the correct glob options.
+
 # Functionality
 
 * All ASCII characters from (including) 32 to (excluding) 127 are sent as text.

@@ -19,7 +19,7 @@ public class Config {
             throw new RuntimeException(e);
         }
         adbPath = properties.getProperty("adbPath", "adb");
-        timeout = Long.parseLong(properties.getProperty("timeout", "0"));
+        timeout = Long.parseLong(properties.getProperty("timeout", "1"));
     }
 }
 

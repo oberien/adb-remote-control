@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class AdbExecOut extends AdbProcess {
     public AdbExecOut(String... command) {
-        super(combine("exec-out", command));
+        super(combine("shell", command));
     }
 
     protected byte[] readToEnd() throws IOException {
