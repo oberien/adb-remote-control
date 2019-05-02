@@ -40,7 +40,6 @@ public class ScreenPanel extends JPanel {
                 }
                 double upX = e.getX() / scale;
                 double upY = e.getY() / scale;
-                System.out.println(e.getButton());
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     device.draganddrop((int) downX, (int) downY, (int) upX, (int) upY, duration);
                 } else {
