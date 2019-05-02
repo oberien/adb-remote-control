@@ -38,11 +38,19 @@ public class AdbDevice {
         }
     }
 
-    public void swipe(int downX, int downY, int upX, int upY) {
+    public void swipe(int downX, int downY, int upX, int upY, long duration) {
         try (AdbShell shell = new AdbShell()) {
-            shell.executeAsync("input swipe " + downX + " " + downY + " " + upX + " " + upY);
+            shell.executeAsync("input swipe " + downX + " " + downY + " " + upX + " " + upY + " " + duration);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+	public void draganddrop(int downX, int downY, int upX, int upY, long duration) {
+        try (AdbShell shell = new AdbShell()) {
+            shell.executeAsync("input draganddrop " + downX + " " + downY + " " + upX + " " + upY + " " + duration);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+	}
 }

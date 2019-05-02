@@ -17,34 +17,34 @@ public class ScreenPanel extends JPanel {
     private BufferedImage screenshot;
     private int startX;
     private int startY;
+    private long startTime;
 
     public ScreenPanel(AdbDevice device) {
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                double scale = getScale();
-                double x = e.getX() / scale;
-                double y = e.getY() / scale;
-                device.click((int) x, (int) y);
-            }
-
-            @Override
             public void mousePressed(MouseEvent e) {
                 startX = e.getX();
                 startY = e.getY();
+                startTime = System.currentTimeMillis();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (startX == e.getX() && startY == e.getY()) {
-                    return;
-                }
                 double scale = getScale();
                 double downX = startX / scale;
                 double downY = startY / scale;
+                long duration = System.currentTimeMillis() - startTime;
+                if (startX == e.getX() && startY == e.getY() && duration < 100) {
+                    device.click((int) downX, (int) downY);
+                    return;
+                }
                 double upX = e.getX() / scale;
                 double upY = e.getY() / scale;
-                device.swipe((int) downX, (int) downY, (int) upX, (int) upY);
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    device.draganddrop((int) downX, (int) downY, (int) upX, (int) upY, duration);
+                } else {
+                    device.swipe((int) downX, (int) downY, (int) upX, (int) upY, duration);
+                }
             }
 
             @Override
