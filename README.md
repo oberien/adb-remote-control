@@ -61,7 +61,7 @@ java de.oberien.adbremotecontrol.Main
 In Signal screenshots are disabled by default.
 This means that while having Signal open, the displayed image of the phone
 won't change.
-Follow [this tutorial](support.whispersystems.org/hc/en-us/articles/213191027-Can-I-take-a-screenshot-)
+Follow [this tutorial](https://support.whispersystems.org/hc/en-us/articles/213191027-Can-I-take-a-screenshot-)
 to enable screenshots and therefore make ADB Remote Control work with Signal.
 
 # License
