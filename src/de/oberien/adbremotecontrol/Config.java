@@ -8,6 +8,7 @@ import java.util.Properties;
 public class Config {
     public static final String adbPath;
     public static final long timeout;
+    public static final String imageFormat;
 
     static {
         Properties properties = new Properties();
@@ -20,6 +21,7 @@ public class Config {
         }
         adbPath = properties.getProperty("adbPath", "adb");
         timeout = Long.parseLong(properties.getProperty("timeout", "1"));
+        imageFormat = properties.getProperty("imageFormat", "jpg");
     }
 }
 

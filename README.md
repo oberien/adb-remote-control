@@ -31,7 +31,7 @@ Depending on your shell, you might need to set the correct glob options.
   numbers and normal special chars.
 * Return (Enter) is sent.
 * Pressing `Esc` emulates a `Back` key event.
-* Pressing `Home` will be forwarded.
+* Pressing `Home` will be forwarded as the home key.
 * `Backspace` will delete the last character.
 * `Ctrl+d` emulates 500 `Backspace` presses and can be used to quickly erase
   a large text.
@@ -42,8 +42,9 @@ Depending on your shell, you might need to set the correct glob options.
 If needed you can create a config file called `config.properties`.
 Currently the following keys are supported:
 
-* `adbPath`: The path to the `adb` binary.
-* `timeout`: The time between having received a screenshot and taking the next one.
+* `adbPath`: The path to the `adb` binary. Defaults to just calling `adb` without a path.
+* `timeout`: The time between having received a screenshot and taking the next one in ms. Defaults to 1 ms.
+* `imageFormat`: `png` or `jpg`. JPG ist faster, but might be of worse quality. Defaults to `jpg`.
 
 # Building
 
