@@ -30,6 +30,7 @@ public class AdbScreencap extends AdbExecOut {
             if (this.useBase64) {
                 // convert to string to handle UTF-16 correctly on Windows
                 String correctEncoding = new String(img);
+                correctEncoding = correctEncoding.trim();
                 img = correctEncoding.getBytes(StandardCharsets.ISO_8859_1);
                 Base64.getDecoder().decode(img, img);
             }
