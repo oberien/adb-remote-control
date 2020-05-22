@@ -44,7 +44,7 @@ public class KeyboardInputThread extends Thread {
                             shell.executeSync(sb.toString());
                             sb = new StringBuilder("input text \"");
                         }
-                        sb.append(inp.getText().replaceAll("\"", "\\\""));
+                        sb.append(inp.getText().replaceAll("\"", "\\\\\""));
                     } else {
                         if (lastText) {
                             lastText = false;
