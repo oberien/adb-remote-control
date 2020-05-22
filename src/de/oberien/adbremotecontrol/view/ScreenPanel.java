@@ -6,10 +6,9 @@ import de.oberien.adbremotecontrol.adb.AndroidKeyEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -70,13 +69,24 @@ public class ScreenPanel extends JPanel {
 
                 // map Ctrl+d to delete 500
                 if (e.getKeyCode() == KeyEvent.VK_D && e.isControlDown()) {
-                    StringBuilder sb = new StringBuilder("input keyevent ");
+                    StringBuilder sb = new StringBuilder("input keyevent");
                     for (int i = 0; i < 500; i++) {
                         sb.append(" ").append(AndroidKeyEvent.KEY_DEL.getKeycode());
                     }
                     try {
                         new AdbShell().executeAsync(sb.toString());
                     } catch (IOException e1) {
+                        throw new RuntimeException(e1);
+                    }
+                }
+                // catch Ctrl+V for pasting
+                if (e.getKeyCode() == KeyEvent.VK_V && e.isControlDown()) {
+                    try {
+                        String text = (String) Toolkit.getDefaultToolkit()
+                            .getSystemClipboard()
+                            .getData(DataFlavor.stringFlavor);
+                        device.text(text);
+                    } catch (UnsupportedFlavorException | IOException e1) {
                         throw new RuntimeException(e1);
                     }
                 }
