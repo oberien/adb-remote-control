@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class AdbScreencap extends AdbExecOut {
@@ -27,7 +28,10 @@ public class AdbScreencap extends AdbExecOut {
         try {
             byte[] img = readToEnd();
             if (this.useBase64) {
-                img = Base64.getDecoder().decode(img);
+                // convert to string to handle UTF-16 correctly on Windows
+                String correctEncoding = new String(img);
+                img = correctEncoding.getBytes(StandardCharsets.ISO_8859_1);
+                Base64.getDecoder().decode(img, img);
             }
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             screenshot = ImageIO.read(bis);
