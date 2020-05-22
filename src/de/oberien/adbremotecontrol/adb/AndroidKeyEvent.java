@@ -98,6 +98,7 @@ public enum AndroidKeyEvent {
     KEY_PAGE_UP(92),
     KEY_PAGE_DOWN(93),
     KEY_PICTSYMBOLS(94),
+    KEY_FORWARD_DEL(112),
     KEY_MOVE_HOME(122),
     KEY_MOVE_END(123);
 
@@ -113,10 +114,14 @@ public enum AndroidKeyEvent {
                 return KEY_ENTER;
             case KeyEvent.VK_ESCAPE:
                 return KEY_BACK;
-            case KeyEvent.VK_HOME:
+            case KeyEvent.VK_INSERT:
                 return KEY_HOME;
+            case KeyEvent.VK_CONTEXT_MENU:
+                return KEY_POWER;
             case KeyEvent.VK_BACK_SPACE:
                 return KEY_DEL;
+            case KeyEvent.VK_DELETE:
+                return KEY_FORWARD_DEL;
             case KeyEvent.VK_UP:
                 return KEY_DPAD_UP;
             case KeyEvent.VK_DOWN:
@@ -125,6 +130,14 @@ public enum AndroidKeyEvent {
                 return KEY_DPAD_LEFT;
             case KeyEvent.VK_RIGHT:
                 return KEY_DPAD_RIGHT;
+            case KeyEvent.VK_HOME:
+                return KEY_MOVE_HOME;
+            case KeyEvent.VK_END:
+                return KEY_MOVE_END;
+            case KeyEvent.VK_PAGE_UP:
+                return KEY_PAGE_UP;
+            case KeyEvent.VK_PAGE_DOWN:
+                return KEY_PAGE_DOWN;
             default:
                 return null;
         }

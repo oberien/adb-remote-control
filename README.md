@@ -26,16 +26,26 @@ Depending on your shell, you might need to set the correct glob options.
 
 # Functionality
 
+Mouse:
+* Left mouse button click for tapping on android
+* Left mouse button drag for swiping on android
+* Right mouse button click for long-tap on android
+* Right mouse button drag for draganddrop on android
+
+Keyboard:
 * All ASCII characters from (including) 32 to (excluding) 127 are sent as text.
   These are all printable ascii characters including lowercase, uppercase,
   numbers and normal special chars.
 * Return (Enter) is sent.
 * Pressing `Esc` emulates a `Back` key event.
-* Pressing `Home` will be forwarded as the home key.
-* `Backspace` will delete the last character.
-* `Ctrl+d` emulates 500 `Backspace` presses and can be used to quickly erase
-  a large text.
-* `Up`, `Down`, `Left` and `Right` are working as expected.
+* Pressing `Insert` emulates the android `Home` key.
+* Pressing `Menu` emulates a `Power` key press.
+* The following keys work as expected during text input:
+    * `Backspace` and `Del`
+    * `Up`, `Down`, `Left` and `Right`
+    * `Home/Pos1` and `End`
+    * `Page Up` and `Page Down`
+* `Ctrl+d` emulates 500 `Backspace` presses and can be used to quickly erase a large text.
 
 # Config
 
