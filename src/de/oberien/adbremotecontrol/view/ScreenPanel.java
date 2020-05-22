@@ -35,7 +35,12 @@ public class ScreenPanel extends JPanel {
                 double downY = startY / scale;
                 long duration = System.currentTimeMillis() - startTime;
                 if (startX == e.getX() && startY == e.getY() && duration < 100) {
-                    device.click((int) downX, (int) downY);
+                    if (e.getButton() == MouseEvent.BUTTON3) {
+                        // right mouse button click = long-press
+                        device.swipe((int) downX, (int) downY, (int) downX, (int) downY, 800);
+                    } else {
+                        device.click((int) downX, (int) downY);
+                    }
                     return;
                 }
                 double upX = e.getX() / scale;
