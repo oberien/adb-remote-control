@@ -46,6 +46,7 @@ Keyboard:
     * `Home/Pos1` and `End`
     * `Page Up` and `Page Down`
 * `Ctrl+d` emulates 500 `Backspace` presses and can be used to quickly erase a large text.
+* `Ctrl+v` pastes the clipboard as text.
 
 # Config
 
