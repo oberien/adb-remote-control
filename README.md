@@ -50,7 +50,7 @@ Keyboard:
 
 # Config
 
-If needed you can create a config file called `config.properties`.
+If needed you can create a config file called `config.properties`. The format of the file is `imageFormat=png`.  
 Currently the following keys are supported:
 
 * `adbPath`: The path to the `adb` binary. Defaults to just calling `adb` without a path.
